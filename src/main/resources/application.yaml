@@ -1,0 +1,34 @@
+# h2 db
+spring:
+  h2:
+    console:
+      enabled: true
+
+  # datasource
+  datasource:
+    url: jdbc:h2:mem:twitter-db
+    driverClassName: org.h2.Driver
+    username: sa
+    password: pass
+  jpa:
+    database-platform: org.hibernate.dialect.H2Dialect
+    show-sql: true
+    hibernate:
+      ddl-auto: validate
+
+# actuator
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "health"
+
+# logging
+logging:
+  level:
+    org:
+      hibernate:
+        type:
+          descriptor:
+            sql:
+              BasicBinder: trace
